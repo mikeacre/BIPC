@@ -1,0 +1,21 @@
+[Unit]
+Description=Console Meteor
+After=network-online.target
+
+[Service]
+WorkingDirectory=/home/ubuntu/simple-todos
+ExecStart=/usr/local/bin/meteor --production
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=Foobar
+User=ubuntu
+Group=ubuntu
+Environment=NODE_ENV=production
+Environment=PWD=/home/ubuntu/simple-todos
+Environment=PORT=3000
+Environment=HTTP_FORWARDED_COUNT=1
+Environment=ROOT_URL=http://34.228.74.200
+
+[Install]
+WantedBy=multi-user.target
